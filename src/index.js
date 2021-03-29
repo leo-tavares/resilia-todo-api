@@ -6,4 +6,10 @@ app.get("/todo/", (_, response) => {
   );
 });
 
+app.get("/user/", (_, response) => {
+  response.send(
+    "Rota ativado com GET e recurso user valores de user devem retornados"
+  );
+});
+
 app.listen("3333", console.log("tudo funfando...."));
