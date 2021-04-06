@@ -9,4 +9,6 @@ routes.get("/todo/:id/", TodoController.getTodo);
 
 routes.post("/todo/", TodoController.create);
 
+routes.delete("/todo/:id", TodoController.remove);
+
 module.exports = routes;

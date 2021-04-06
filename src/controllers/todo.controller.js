@@ -37,6 +37,21 @@ class TodoController {
   static getAll(_, res) {
     res.send(todos);
   }
+  /**
+   * @param {request} req
+   * @param {response} res
+   */
+  static remove(req, res) {
+    const { id } = req.params;
+
+    const todoIdx = todos.findIndex((todo) => todo.getTodo().id === Number(id));
+    if (todoIdx < 0) {
+      res.status(400).send({ msg: "Todo não encontrado" });
+    } else {
+      todos.splice(todoIdx, 1);
+      res.send({ msg: "Todo removido com sucesso" });
+    }
+  }
 }
 
 module.exports = TodoController;
