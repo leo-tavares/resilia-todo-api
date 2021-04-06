@@ -1,15 +1,13 @@
-const app = require("express")();
+const express = require("express");
+const TodoController = require("./controllers/todo.controller");
 
-app.get("/todo/", (_, response) => {
-  response.send(
-    "Rota ativado com GET e recurso TODO valores de todo devem retornados"
-  );
-});
+const app = express();
+app.use(express.json());
 
-app.get("/user/", (_, response) => {
-  response.send(
-    "Rota ativado com GET e recurso user valores de user devem retornados"
-  );
-});
+app.get("/todo/", TodoController.getAll);
+
+app.get("/todo/:id/", TodoController.getTodo);
+
+app.post("/todo/", TodoController.create);
 
 app.listen("3333", console.log("tudo funfando...."));
